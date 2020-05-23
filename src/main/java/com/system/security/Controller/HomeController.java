@@ -1,5 +1,6 @@
 package com.system.security.Controller;
 
+import com.system.security.Model.Products;
 import com.system.security.Service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ public class HomeController {
         modelAndView.addObject("products",productsService.getAllProducts());
         modelAndView.addObject("Total",productsService.getTotalCollection().toString());
         modelAndView.addObject("Size",productsService.sizeOfListCollection());
+        modelAndView.addObject("productCategories",productsService.getAllProductCategories());
         modelAndView.setViewName("home");
         return modelAndView;
     }
@@ -41,5 +43,13 @@ return "redirect:/";
 productsService.removeProductCollection(id);
         return "redirect:/";
 }
+    @RequestMapping(value = "/AddToCart/Search/{productName}",method = RequestMethod.GET)
+    public ModelAndView fetchSearchProduct(@PathVariable String productName){
+ModelAndView modelAndView = new ModelAndView();
+Products products=productsService.findByProductName(productName);
+modelAndView.addObject("product",products);
+modelAndView.setViewName("SearchPost");
+return modelAndView;
 
+    }
 }

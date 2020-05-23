@@ -11,19 +11,68 @@
 <div class="container my-5">
     <h1>ADD PRODUCT</h1>
     <div class="row">
+
         <div class="col">
-            <form enctype="multipart/form-data" th:action="@{/admin/post/createPost}" th:object="${products}" method="post">
-                <div class="form-group">
-                    <label for="productName" class="col-form-label" >Product Name</label>
-                    <input type="text" th:field="*{productName}" class="form-control" id="productName"  placeholder="Enter Product Name "><span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="text-danger"></span>
+            <form enctype="multipart/form-data" th:action="@{/admin/post/createPost}"   method="post">
+
+                <form>
+                    <h3>Brand Name</h3>
+                    <div class="form-row align-items-center">
+                        <div class="col-auto my-1" th:object="${products.productsCategory}">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" th:field="*{id}">
+                            <option th:each="category:${productCategories}"  th:value="${category.id}" >[[${category.CategoriesName}]]</option>
+
+                            </select>
+                        </div>
+
+                <h3>Product</h3>
+
+                    <div class="form-group" th:object="${products}" >
+
+                        <input type="text" th:field="*{productName}" class="form-control" id="productName"  placeholder="Enter Product Name "><span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="text-danger"></span>
+
+
+
+
+                        <input type="number"  th:field="*{price}" class="form-control" id="price"  placeholder="Enter Product Price"><span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span>
+                        <input type="hidden" id="id" th:field="*{id}">
+                    </div>
+
+
+                <h3>Product Specification</h3>
+                <div class="col" th:object="${products.productSpecs}" >
+                    <div class="form-group">
+
+                    <input type="text" class="form-control" id="Processor"  placeholder="Enter Processor" th:field="*{Processor}">
                 </div>
 
+                    <div class="form-group">
 
-                <div class="form-group">
-                    <label for="price" class="col-form-label">Product Price</label>
-                    <input type="number"  th:field="*{price}" class="form-control" id="price"  placeholder="Enter Product Price"><span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span>
+                        <input type="text"  class="form-control" id="RAM"  placeholder="Enter RAM" th:field="*{RAM}">
+                    </div>
 
+                    <div class="form-group">
+
+                        <input type="text"  class="form-control" id=" Storage"  placeholder="Enter  Storage" th:field="*{Storage}">
+                    </div>
+
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" id="Display"  placeholder="EnterDisplay" th:field="*{Display}">
+                    </div>
+
+                    <div class="form-group">
+
+                        <input type="text"  class="form-control" id="Camera"  placeholder="Enter Camera Config" th:field="*{Camera}">
+                    </div>
+
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" id="Battery"  placeholder="Enter Battery" th:field="*{Battery}">
+                    </div>
                 </div>
+
                 <div class="form-group">
                     <label>Upload Image</label>
                     <input type="file" class="form-control-file" name="imageFile">
@@ -33,7 +82,7 @@
                 <div class="col-md-6">
                     <input type="submit" class="btn btn-primary" value=" Submit ">
                 </div>
-                <input type="hidden" id="id" th:field="*{id}">
+
 
 
             </form>

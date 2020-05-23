@@ -1,8 +1,13 @@
 package com.system.security.Service;
 
 
+import com.system.security.Model.ProductSpecs;
 import com.system.security.Model.Products;
+import com.system.security.Model.ProductsCategory;
+import com.system.security.Model.Review;
+import com.system.security.Repository.ProductCategoryRepository;
 import com.system.security.Repository.ProductRepository;
+import com.system.security.Repository.ReviewRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +27,10 @@ import java.util.stream.Collectors;
 public class ProductsService {
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     private final Map<Products,Integer> addToCart = new HashMap<>();
 
@@ -121,6 +130,44 @@ public void removeAllProductFromCollection(){
     productsCollection.removeAll(getProductsCollection());
 }
 
+public Products findProduct(String productname){return productRepository.findByProductName(productname);}
+
+
+
+//categories
+
+    public List<ProductsCategory> getAllProductCategories (){
+    return productCategoryRepository.findAll();
+    }
+    public ProductsCategory getCategories(int id){
+    return productCategoryRepository.findById(id).orElse(null);
+    }
+
+
+    public ProductsCategory getProductId(int id){
+    return productCategoryRepository.findById(id).orElse(null);
+    }
+//ProductSpec
+    public ProductSpecs getProductSpecs(int id){
+    return findByProductId(id).getProductSpecs();
+    }
+
+   //ProductReview
+
+
+    public Collection<Review> getReviewByProductId(int id){
+   return findByProductId(id).getReviews();
+    }
+public Double getAverageInteger(int id){
+    IntSummaryStatistics stat = getReviewByProductId(id).stream().mapToInt(entry->entry.getRating())
+            .summaryStatistics();
+
+ return stat.getAverage();
 }
+
+
+}
+
+
 
 

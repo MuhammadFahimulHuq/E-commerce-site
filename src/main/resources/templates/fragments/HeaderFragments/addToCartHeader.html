@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<li class="nav-item dropdown"  th:fragment="addToCartHeader">
+<li class="nav-item dropdown" id="addToCartDropdown"  th:fragment="addToCartHeader">
     <a class="nav-link dropdown-toggle" id="navbarAddToCart" role="button" data-toggle="dropdown" aria-haspopup="true"   >
         <img src="https://image.flaticon.com/icons/svg/1136/1136143.svg" th:text="' ' +${Size==0} ? '' : ${Size}" style="width: 25px; height:25px;" >
     </a>

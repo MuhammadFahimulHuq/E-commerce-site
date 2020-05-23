@@ -25,8 +25,7 @@ public class Products {
     private int id;
     @Column(name = "product_name")
     private String productName;
-//    @Lob @Column(name = "product_description")
-//    private String description;
+
 //    @Column(name = "product_quantity")
 //    private int quantity;
     @Column(name = "product_price")
@@ -40,7 +39,14 @@ public class Products {
         return Base64.encodeBase64String(this.getProductImage());
     }
 
-    @ManyToMany
-    private Collection<OrderList>  orderList;
 
+    @ManyToOne
+    private ProductsCategory productsCategory ;
+
+    @OneToOne
+    private ProductSpecs productSpecs;
+
+
+    @OneToMany
+    private Collection<Review> reviews;
 }

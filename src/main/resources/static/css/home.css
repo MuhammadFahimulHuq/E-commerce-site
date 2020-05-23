@@ -1,0 +1,126 @@
+#postrow{padding-bottom:20%}
+#postcol{padding-top:2rem}
+#postcard{height: 30rem}
+
+.admin{
+padding-left:4px}
+
+#carouselrow{
+padding-top:100px;
+padding-bottom: 5rem
+}
+.carousel-image{
+width:100%;
+height: 800px}
+.buttonSearch{
+padding-left:6px}
+
+#signUpButton{
+width:80px}
+#loginButton{
+width:80px}
+
+.addToCart{
+padding-left:210px
+}
+.addToCartIcon{
+width: 15px; height:15px;
+}
+#navbar-main{
+position:fixed;width:100%; z-index: 1000000; top:0;
+}
+.navbarH1{
+color:#ffd359
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#navbarSearch:{
+   display: flex;
+    justify-content: space-between;
+    width:200px
+    }
+
+   #userPrinciple{
+    display: flex;
+       justify-content: space-between;
+   }
+@media only screen
+and (min-width : 425px) {
+.searchandAddtoCart{
+padding-top: 30px;}
+
+}
+
+@media only screen
+and (min-width : 1024px)  {
+.searchandAddtoCart{
+padding-top: 30px;
+}
+
+#navbarRow{
+    padding-left: 65px;}
+
+#userPrinciple{padding-left: 20px;}
+
+.buttonitem{
+  display:inline;
+    display:inline-block;
+}
+.setting{
+padding-left:132px;
+}
+}
+
+@media only screen and (min-width:1440px){
+#navbarRow{
+   padding-left: 200px;}
+#searchbar{
+width: 326px;}
+#userPrinciple{padding-left: 80px;}
+#navbarSearch {
+padding-left:110px
+}
+.setting{
+padding-left:177px;
+}
+}
+
+@media only screen and (min-width:1680px){
+#navbarRow{
+   padding-left: 150px;}
+#searchbar{
+width: 355px;}
+#userPrinciple{padding-left: 40px;}
+.setting{
+padding-left:395px;
+}
+}
+@media only screen and (min-width:1800px){
+#navbarRow{
+   padding-left: 250px;}
+#searchbar{
+width: 480px;}
+#userPrinciple{padding-left: 100px;}
+.setting{
+padding-left:332px;
+}
+}
+
+@media only screen and (min-width:2560px){
+#navbarRow{
+   padding-left: 450px;}
+#searchbar{
+width: 480px;}
+#userPrinciple{padding-left: 200px;}
+.setting{
+padding-left:650px;
+}
+}
+
+
+
+
+}

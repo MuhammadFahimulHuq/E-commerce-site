@@ -5,12 +5,13 @@
     <link rel="icon" href="https://image.flaticon.com/icons/svg/2920/2920291.svg">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/css/postview.css}"/>
     <title>Venture--post</title>
 </head>
 <body>
 <div th:replace="fragments/MainNavBarHeader :: MainNavBarHeader ">...</div>
 
-<div class="container" style="padding-top: 200px;padding-bottom: 200px" >
+<div class="container" style="padding-top: 80px;padding-bottom: 200px" >
     <div class="row">
         <div class="col-6" align="middle">
             <img style="height:500px;" class="img-responsive"  th:src="@{'data:image/jpeg;base64,'+${product.generateBase64Image()}}" alt="image not found!">
@@ -22,7 +23,13 @@
                     <h3 class="card-title" th:text="${product.productName}"></h3>
 
                     <strong>Price <p th:text="'BDT:' +${product.price}"></p></strong>
-                    <br>
+
+
+                    <p th:text="${getAverageInteger==0} ? 'Not Rated' : 'Rating:' +${getAverageInteger}+'/5'" ></p>
+                    <div class="card" style="width: 18rem;">
+
+                    </div>
+
                     <a href="/" class="card-link"><img src="https://www.flaticon.com/premium-icon/icons/svg/2582/2582190.svg"  style="width: 25px; height:25px;">Continue browsing</a>
 
                     <a href="/confirmationPage" class="card-link"><img src="https://image.flaticon.com/icons/png/512/2921/2921226.png"  style="width: 25px; height:25px;">Proceed To Purchase</a>
@@ -34,9 +41,59 @@
                 </div>
             </div>
         </div>
+    </div>
+<div class="row">
+    <div class="col"><h4>Comment Below</h4></div>
+    <p th:text="'No Of Comment: ' +${ReviewSize}"></p>
+</div>
+    <div class="row">
+        <div class="col">
+            <form th:action="@{'/comment/'+${product.id}}" method="post">
+<div  th:object="${review}" >
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Write Your Review" th:field="*{comment}" ></textarea>
+<div style="padding-left:90%">
+        <div class="form-row ">
+            <div class="col-auto my-1">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Rate: </label>
+            </div>
+            <div class="col-auto my-1">
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" th:field="*{rating}">
+                    <option selected value="5">Five</option>
+                    <option value="4">Four</option>
+                    <option value="3">Three</option>
+                    <option value="2">Two</option>
+                    <option value="1">One</option>
+                </select>
+            </div>
 
+      <button type="submit" class="btn btn-primary mb-2">Comment</button>
     </div>
 
+</div>
+
+</div>
+
+            </form>
+            </div>
+        </div>
+
+
+<div class="row">
+    <div class="col">
+        <div class="card" th:each="post:${Review}">
+            <div class="card-header">
+              [[${post.user.userName}]]
+                <div class="ml-auto"><p>rating: [[${post.rating}]]/5</p></div>
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p >[[${post.comment}]]</p>
+                    <footer class="blockquote-footer">Date Posted:<cite title="Source Title">[[${post.date}]]</cite></footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 <div th:replace="fragments/Footer :: Footer ">...</div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

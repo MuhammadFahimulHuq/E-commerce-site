@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
@@ -53,4 +54,12 @@ private Set<Role> roles;
     @OneToMany
     private Collection<OrderList> orderList;
 
+
+
+
+    @OneToMany
+    private Collection<Products>products = new ArrayList<>();
+
+    @OneToMany
+    private Collection<Review> reviews ;
 }
