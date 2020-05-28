@@ -30,13 +30,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://i.ytimg.com/vi/8Mo4MBVDO5I/maxresdefault.jpg" class="carousel-image d-block"  alt="...">
+                    <img src="https://images.unsplash.com/photo-1563915791443-a5e11d3ff785?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" class="carousel-image d-block"  alt="..." >
                 </div>
                 <div class="carousel-item">
-                    <img src="https://s3.amazonaws.com/neowin/news/images/uploaded/2017/04/1491587284_screen_shot_2017-04-07_at_10.47.03_am.jpg" class="carousel-image d-block  "  alt="...">
+                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" class="carousel-image d-block  "  alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://i.ytimg.com/vi/oGEhi2w5hag/maxresdefault.jpg" class="carousel-image d-block  "  alt="...">
+                    <img src="https://images.unsplash.com/photo-1572766156884-828770df8d7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80" class="carousel-image d-block  "  alt="...">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -73,15 +73,16 @@
 
 
             </div>
-            <a th:href="@{'/AddToCart/addProduct/'+${product.id}}" class="addToCart" ><img src="https://image.flaticon.com/icons/svg/753/753317.svg" class="addToCartIcon" > Add to card</a>
+            <a th:href="@{'/cart/AddCart/'+${product.id}}" class="addToCart" ><img src="https://image.flaticon.com/icons/svg/753/753317.svg" class="addToCartIcon" > Add to card</a>
         </div>
 
     </div>
 </div>
 
         <div th:replace="fragments/Footer :: Footer ">...</div>
+
+</body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
 </html>

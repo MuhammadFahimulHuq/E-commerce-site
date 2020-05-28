@@ -9,8 +9,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.math.BigDecimal;
-import java.util.*;
+import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Table(name = "OrderList")
@@ -44,18 +44,19 @@ public class OrderList {
     @Column(name="Customer_CreditCardPINCODE")
     private String CreditCardPassword;
 
-    @Column(name = "Total_amount",nullable = false)
-    private BigDecimal Total;
 
 
 //    @MapKeyColumn(name = "key")
 //    @OneToMany(cascade = CascadeType.MERGE,targetEntity = Products.class,fetch = FetchType.LAZY)
 //    private Map<Products,Integer> productsIntegerHashMap = new HashMap<>();
 //
+    @OneToMany( cascade = CascadeType.ALL)
+    private Collection<OrderItems> orderItems;
+
     @ManyToOne
     private User user;
 
 
-    @ManyToMany(targetEntity = Products.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    public Collection<Products> products = new ArrayList<>();
+
+
 }

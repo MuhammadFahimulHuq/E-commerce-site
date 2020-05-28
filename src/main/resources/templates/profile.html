@@ -60,13 +60,20 @@
         <tr>
             <th scope="col"> Product Name</th>
             <th scope="col">Product Price</th>
+            <th scope="col">Shipment Address</th>
+            <th scope="col">Phone Number Provided</th>
+            <th scope="col">Purchased Date</th>
         </tr>
         </thead>
 
-        <tbody >
-        <tr th:each="cart:${ordersCart} ">
-            <td  > [[${cart.productName}]]</td>
-            <td>[[${cart.price}]]</td>
+        <tbody th:each="order:${orders} ">
+        <tr th:each="items : ${order.orderItems}" >
+            <td th:text="${items.products.productName}"></td>
+            <td th:text="${items.products.price}"></td>
+            <td>[[${order.customerAddress}]]</td>
+            <td>[[${order.customerPhone}]]</td>
+            <td>[[${order.orderDate}]]</td>
+
         </tbody>
         </tr>
         </tbody>

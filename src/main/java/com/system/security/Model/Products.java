@@ -19,15 +19,26 @@ import java.util.Collection;
 @Table(name = "product")
 
 public class Products {
+
+    @ManyToOne
+    private ProductsCategory productsCategory ;
+
+    @OneToOne
+    private ProductSpecs productSpecs;
+
+
+    @OneToMany
+    private Collection<Review> reviews;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "product_id")
     private int id;
     @Column(name = "product_name")
     private String productName;
-
-//    @Column(name = "product_quantity")
-//    private int quantity;
+//
+//     @Column(name = "product_quantity")
+//      private int quantity = 1;
     @Column(name = "product_price")
     private BigDecimal price;
     @Lob @Basic(fetch = FetchType.LAZY)
@@ -40,13 +51,6 @@ public class Products {
     }
 
 
-    @ManyToOne
-    private ProductsCategory productsCategory ;
-
-    @OneToOne
-    private ProductSpecs productSpecs;
 
 
-    @OneToMany
-    private Collection<Review> reviews;
 }

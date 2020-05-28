@@ -5,42 +5,13 @@
 </head>
 <body>
 
-<li class="nav-item dropdown" id="addToCartDropdown"  th:fragment="addToCartHeader">
-    <a class="nav-link dropdown-toggle" id="navbarAddToCart" role="button" data-toggle="dropdown" aria-haspopup="true"   >
-        <img src="https://image.flaticon.com/icons/svg/1136/1136143.svg" th:text="' ' +${Size==0} ? '' : ${Size}" style="width: 25px; height:25px;" >
+<li class="nav-item dropdown" id="addToCartDropdown" style="padding-top:5px;padding-left:15px"  th:fragment="addToCartHeader">
+    <a  id="navbarAddToCart" th:href="@{/cart}">
+        <img src="https://image.flaticon.com/icons/svg/1136/1136143.svg" th:text="'' +${CartSize==0} ? '' : ${CartSize}" style="width: 25px; height:25px;" >
     </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width:280px"  align="center"   >
-
-        <h6 style="text-align:center"th:text="${Size==0} ? 'Collect List '  : 'Add To Cart'" > </h6>
-        <div   th:each="Carts :${addToCartProducts}" >
-
-
-                <div class="row" style="padding-top:0px; width:300px ">
-                    <div class="col" style="width:100px">
-                        <img  th:src="@{'data:image/jpeg;base64,'+${Carts.generateBase64Image()}}" class="card-img" alt="...">
-                    </div>
-                    <div class="col"  style="width:90px; font-size:12px" ><p >[[${Carts.productName}]]</p></div>
-                    <div class="col" style="width:80px;font-size:12px" ><p >BDT: [[${Carts.price}]]</p></div>
-                    <div class="col" style="width:30px">  <a th:href="@{'/AddToCart/RemoveProduct/'+${Carts.id}}">
-                        <img th:src="@{https://image.flaticon.com/icons/svg/458/458594.svg}" style="width: 25px; height:25px;"></a>
-                    </div>
-
-                    </div>
 
 
 
-
-
-            <br>
-        </div>
-        <h5 style="text-align:center" th:if="${Size>1} ">Total-BDT: [[${Total}]] </h5>
-        <p style="text-align:center" th:if="${Size>0}  "> <a href="/confirmationPage" class="card-link"><img src="https://image.flaticon.com/icons/png/512/2921/2921226.png"  style="width: 25px; height:25px;">Proceed To Purchase</a></p>
-
-        <br>
-    </div>
-    </div>
-
-    </ul>
 </li>
 </body>
 </html>

@@ -23,11 +23,11 @@ public class ProfileController {
     @RequestMapping(value = "/profile",method = RequestMethod.GET)
     public String getProfile(Model model, Principal principal){
 
-        model.addAttribute("orders",orderedService.orderListCollection(principal));
-        model.addAttribute("ordersCart",orderedService.fetchProduct(principal));
-
-        model.addAttribute("Total",orderedService.TotalProducts(principal));
-        model.addAttribute("Size",orderedService.fetchProduct(principal).size());
+        model.addAttribute("orders",orderedService.getAllOrderFromUser(principal));
+//        model.addAttribute("ordersCart",orderedService.fetchProduct(principal));
+//
+//        model.addAttribute("Total",orderedService.TotalProducts(principal));
+//        model.addAttribute("Size",orderedService.fetchProduct(principal).size());
         return "profile";
     }
 

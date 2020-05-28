@@ -31,7 +31,7 @@
 
                 <div th:if="!${#request.userPrincipal}"  >
 
-                    <ul class="buttonitem  " id="userPrinciple">
+                    <ul class="buttonitem  " id="userPrinciple"  style="padding-top:21px">
                         <li class="nav-item ">
                             <a class="nav-link " href="/registration"  ><button type="button" class="button btn btn-outline-primary " id="signUpButton">Sign up</button></a>
                         </li>
@@ -40,10 +40,10 @@
                         </li>
                     </ul>
                 </div>
-            <div th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" class="admin"><a href="/admin/post"><button type="button" class="btn btn-outline-dark">Post Product</button></a></div>
+            <div th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" class="admin" style="padding-top:32px"><a href="/admin/post"><button type="button" class="btn btn-outline-dark">Post Product</button></a></div>
 
                 <div  sec:authorize="isAuthenticated()" class="setting">
-                    <ul class="navbar-nav" >
+                    <ul class="navbar-nav"  style="padding-top:21px">
                         <li class="nav-item dropdown ml-auto">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:1.25rem;font-weight:500">
                            <img src="https://image.flaticon.com/icons/svg/2921/2921299.svg" style="height:40px; width:40px">

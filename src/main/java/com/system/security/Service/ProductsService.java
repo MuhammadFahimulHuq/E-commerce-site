@@ -5,9 +5,9 @@ import com.system.security.Model.ProductSpecs;
 import com.system.security.Model.Products;
 import com.system.security.Model.ProductsCategory;
 import com.system.security.Model.Review;
+import com.system.security.Repository.CartRepository;
 import com.system.security.Repository.ProductCategoryRepository;
 import com.system.security.Repository.ProductRepository;
-import com.system.security.Repository.ReviewRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +30,14 @@ public class ProductsService {
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
     @Autowired
-    private ReviewRepository reviewRepository;
+    private CartRepository cartRepository;
+    @Autowired
+    private OrderedService orderedService;
 
-    private final Map<Products,Integer> addToCart = new HashMap<>();
+
+
+
+
 
     private Collection<Products> productsCollection = new ArrayList<>();
 
@@ -57,31 +62,18 @@ public class ProductsService {
         Files.write(path,bytes);
     }
     /**addToCart  add function**/
-    public void addProduct(Products product){
-        if(addToCart.containsKey(product)){
-            addToCart.replace(product,addToCart.get(product)+1);
-        }
-        else{
-            addToCart.put(product,1);
-        }
-    }
+
     public void addProductCollection(Products products){
         productsCollection.add(products);
     }
 
     /**addToCart  remove function**/
-    public void removeProduct(Products product){
-        if ( addToCart.containsKey(product)) {
-            if ( addToCart.get(product) > 1)
-                addToCart.replace(product,  addToCart.get(product) - 1);
-            else if ( addToCart.get(product) == 1) {
-                addToCart.remove(product);
-            }
-        }
-    }
+
     public void removeProductCollection(int id) {
     if(productsCollection != null){
         productsCollection.removeIf(entry->entry.getId()==id);
+
+
     }
     else System.out.println("no product id:"+id);
     }
@@ -90,11 +82,8 @@ public class ProductsService {
 
 
     /**addToCart  get function**/
-    public Map<Products,Integer> getProductsInCart(){
-        return Collections.unmodifiableMap( addToCart);
-    }
 
-    public Collection<Products> getProductsCollection(){
+    public List<Products> getProductsCollection(){
 return productsCollection.stream().collect(Collectors.toList());
     }
 
@@ -103,17 +92,12 @@ return productsCollection.stream().collect(Collectors.toList());
 
 
 /**addToCart size of the list**/
-public int sizeOfList (){return getProductsInCart().size();}
+
 
 public int sizeOfListCollection(){return  getProductsCollection().size();}
 
 /**addToCart get Total**/
-public BigDecimal getTotal(){
-    return addToCart.entrySet().stream()
-            .map(entry-> entry.getKey().getPrice().multiply(BigDecimal.valueOf(entry.getValue())))
-            .reduce(BigDecimal::add)
-            .orElse(BigDecimal.ZERO);
-}
+
 public BigDecimal getTotalCollection(){
     return productsCollection.stream()
             .map(entry->entry.getPrice())
@@ -130,7 +114,7 @@ public void removeAllProductFromCollection(){
     productsCollection.removeAll(getProductsCollection());
 }
 
-public Products findProduct(String productname){return productRepository.findByProductName(productname);}
+
 
 
 
@@ -164,7 +148,6 @@ public Double getAverageInteger(int id){
 
  return stat.getAverage();
 }
-
 
 }
 
