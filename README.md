@@ -17,7 +17,7 @@ USER REGISTRATION PAGE<br>
 <br>
 ADD TO CART PAGE<br>
 ![](/images/cart.png)
-<br
+<br>
 USER PROFILE PAGE<br>
 ![](/images/profile.png)
 <br>
@@ -31,6 +31,6 @@ USER ADMIN PAGE--EDIT PRODUCTS POST<br>
 ![](/images/admin-post-allProducts.png)
 
 
-****LANGUAGES USED******
-backend- spring boot, mysql, spring security
+****LANGUAGES USED******<br>
+backend- spring boot, mysql, spring security<br>
 frontend- html,bootstrap,css
